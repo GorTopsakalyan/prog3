@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+    <script src="script.js"></script>
+    <style>
+        tbody{
+            font-size: 104%;
+        }
+       
+        h1,
+        h2 {
+            text-align: center;
+            vertical-align: middle;
+            font-size: 270%;
+        }
+        .btn{
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        body {
+            background-color: rgb(114, 149, 181);
+        }
+        th{
+            font-size: 105%;
+            background-color: rgb(77, 105, 130);
+        }
+        .button {
+            width: 100%;
+            height: 10%;
+            color: rgb(158, 214, 45);
+            text-decoration: none;
+            text-transform: uppercase;
+            text-align: center;
+            line-height: 15px;
+            letter-spacing: 2px;
+            margin: 0.6%;
+            transition: 0.5s;
+            background-color: rgb(114, 149, 181);
+        }
+        .button:hover{
+                background:  rgb(24, 49, 71) url(button.png);
+                transition-delay: 0.8s;
+                background-size: 180px;
+                animation: animate 0.8s steps(8) forwards;
+        }
+        @keyframes animate {
+            0%
+            {
+                background-position-y:  0;
+            }
+            100%
+            {
+                background-position-y:  -480px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="a">
+
+        <table class="table table-hover">
+            
+            <thead>
+       
+                <tr>
+
+                    <h1 id="pr" style="margin-top: 7px;">Programming III</h1>
+                </tr>
+                <tr>
+                    <h2>Gor Topsakalyan</h2>
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Գույն</th>
+                    <th scope="col">Նկարագրություն</th>
+                    <th scope="col">Ծնվել է</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td scope="row" style="background-color:green;"></td>
+                    <td> խոտ, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
+                        կրակը, կամ նրան կոխկրտում է գիշատիչը։</td>
+                    <td id="grassCount"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td scope="row" style="background-color:yellow;"></td>
+                    <td>խոտակեր, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
+                        երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                    <td id="grassEaterCount"></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td scope="row" style="background-color:red;"></td>
+                    <td>գիշատիչ, որը բազմանում է N հատ խոտակեր կամ մարդ ուտելուց հետո և մահանում է N հատ չուտելուց հետո,
+                        կամ
+                        երբ N անգամ չի ուտում խոտակեր։</td>
+                    <td id="eaterCount"></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td scope="row" style="background-color:blue;"></td>
+                    <td>մարդ,չի բազմանում,մահանում է N ժամանակ հետո,ուտում է խոտակերին,իր հետևից առաջացնում է խոտ</td>
+                    <td id="manCount"></td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td scope="row" style="background-color:black;"></td>
+                    <td>ժայռ,չի բազմանում, չի մահանում,ամեն N վայրկյանը մեկ "քանդվում" է և ոչնչացնում իր կողքը գտնվող
+                        վանդակները</td>
+                    <td id="stoneCount"></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="tools">
+            <h1 style="color:rgb(158, 214, 45)">Events</h1>
+            <div class="btn">
+                
+                    <button class="button" onclick="kill()"><h4>Kill them all</h4></button>
+                
+               
+                    <button class="button" onclick="addGrass()"><h4>Add grass</h4></button>
+             
+                    <button class="button" onclick="addGrassEater()"><h4>Add grass eater</h4></h4></button>
+                
+                    <button class="button" onclick="addEater()"><h4>Add eater</h4></button>
+               
+                    <button class="button" onclick="addMan()"><h4>Add Man</h4></button>
+               
+                    <button class="button" onclick="addStone()"><h4>Add stone</h4></button>
+
+                 
+              
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
